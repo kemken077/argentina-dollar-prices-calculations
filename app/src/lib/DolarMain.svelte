@@ -3,15 +3,37 @@
   import axios from 'axios';
   import { API } from '../config/api';
 
-  onMount(() => {
+  let currencyPrices = [];
+
+  onMount(async () => {
     const domain = API.domain;
     const endpoint = API.endpoints.dolarPrice;
     const url = `${domain}${endpoint}`;
-    axios(url)
-      .then((response) => {
-        console.log(response.data);
-      }).catch((error) => {
-        console.log('Error: ', error);
-      });
+
+    try {
+      const res = await axios.get(url);
+      console.log(res.data);
+      currencyPrices = res.data;
+    } catch (error) {
+      console.log('Error: ', error);
+    }
   });
 </script>
+
+<main>
+  {#each currencyPrices as price  }
+    <h1>{price.currencyName}</h1>
+    <ul>
+      <li>Compra:</li>
+      <li>{price.values.buy}</li>
+      <li>Venta:</li>
+      <li>{price.values.sale}</li>
+    </ul>
+  {/each}
+</main>
+
+<style>
+  h1 {
+    font-size: 62px;
+  }
+</style>

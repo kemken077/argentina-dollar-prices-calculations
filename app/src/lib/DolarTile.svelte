@@ -1,3 +1,2 @@
-<script>
-  console.log('Dolar tile')
-</script>
+<script></script>
+

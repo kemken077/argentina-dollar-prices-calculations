@@ -1,11 +1,11 @@
 export const ENGLISH = {
   header: {
-    title: 'How much money I have?'
+    title: 'How much my money is worth?'
   }
 };
 
 export const SPANISH = {
   header: {
-    title: '¿Cuanto dinero tengo?'
+    title: '¿Cuanto vale mi dinero?'
   }
 };
