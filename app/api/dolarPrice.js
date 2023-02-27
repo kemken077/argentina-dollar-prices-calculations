@@ -16,7 +16,6 @@ const parseValue = (value, splitIdentifier) => {
 export default function dolarPrice(request, response) {
   const message = 'Hello Serverless functions!';
   const url = 'https://www.dolarhoy.com';
-  console.log(message);
   axios(url)
     .then(res => {
       const html = res.data;
@@ -31,11 +30,8 @@ export default function dolarPrice(request, response) {
         const currencyData = getCurrencyData(title, { buy: valueBuy, sale: valueSale});
         currencyPrices.push(currencyData);
       });
-
-      console.log(currencyPrices);
-
       response.status(200).json(currencyPrices);
-
     })
     .catch(err => console.log(err));
+  // End axios HTTP request.
 }
