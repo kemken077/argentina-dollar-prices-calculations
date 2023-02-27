@@ -15,6 +15,27 @@ const parseValue = (value, splitIdentifier) => {
 
 export default function dolarPrice(request, response) {
   const message = 'Hello Serverless functions!';
+  const url = 'https://www.dolarhoy.com';
   console.log(message);
-  response.end(message);
+  axios(url)
+    .then(res => {
+      const html = res.data;
+      const $ = cheerio.load(html);
+      let currencyPrices = [];
+
+      const tilesDolar = $('.tile.is-parent.is-7.is-vertical .tile.is-child', html);
+      tilesDolar.each(function() {
+        const title = $(this).find('.title').text();
+        const valueBuy = parseValue($(this).find('.values .compra').text(), '$');
+        const valueSale = parseValue($(this).find('.values .venta').text(), '$');
+        const currencyData = getCurrencyData(title, { buy: valueBuy, sale: valueSale});
+        currencyPrices.push(currencyData);
+      });
+
+      console.log(currencyPrices);
+
+      response.status(200).json(currencyPrices);
+
+    })
+    .catch(err => console.log(err));
 }
