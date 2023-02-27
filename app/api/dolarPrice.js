@@ -12,9 +12,16 @@ const getCurrencyData = (currencyName, values) => {
 const parseValue = (value, splitIdentifier) => {
   return value !== '' ? parseFloat(value.split(splitIdentifier)[1]) : null;
 };
-
 export default function dolarPrice(request, response) {
-  const message = 'Hello Serverless functions!';
+  response.setHeader('Access-Control-Allow-Credentials', true);
+  response.setHeader('Access-Control-Allow-Origin', '*');
+  // another common pattern
+  // response.setHeader('Access-Control-Allow-Origin', req.headers.origin);
+  response.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS,PATCH,DELETE,POST,PUT');
+  response.setHeader(
+    'Access-Control-Allow-Headers',
+    'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version'
+  );
   const url = 'https://www.dolarhoy.com';
   axios(url)
     .then(res => {
@@ -27,7 +34,7 @@ export default function dolarPrice(request, response) {
         const title = $(this).find('.title').text();
         const valueBuy = parseValue($(this).find('.values .compra').text(), '$');
         const valueSale = parseValue($(this).find('.values .venta').text(), '$');
-        const currencyData = getCurrencyData(title, { buy: valueBuy, sale: valueSale});
+        const currencyData = getCurrencyData(title, { buy: valueBuy, sale: valueSale });
         currencyPrices.push(currencyData);
       });
       response.status(200).json(currencyPrices);

@@ -1,3 +1,3 @@
 <script>
-  console.log('Dolar Tile component!')
+  console.log('Dolar tile')
 </script>
