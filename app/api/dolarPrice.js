@@ -12,16 +12,25 @@ const getCurrencyData = (currencyName, values) => {
 const parseValue = (value, splitIdentifier) => {
   return value !== '' ? parseFloat(value.split(splitIdentifier)[1]) : null;
 };
-export default function dolarPrice(request, response) {
-  response.setHeader('Access-Control-Allow-Credentials', true);
-  response.setHeader('Access-Control-Allow-Origin', '*');
+
+const allowCors = fn => async (req, res) => {
+  res.setHeader('Access-Control-Allow-Credentials', true)
+  res.setHeader('Access-Control-Allow-Origin', '*')
   // another common pattern
-  // response.setHeader('Access-Control-Allow-Origin', req.headers.origin);
-  response.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS,PATCH,DELETE,POST,PUT');
-  response.setHeader(
+  // res.setHeader('Access-Control-Allow-Origin', req.headers.origin);
+  res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS,PATCH,DELETE,POST,PUT')
+  res.setHeader(
     'Access-Control-Allow-Headers',
     'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version'
-  );
+  )
+  if (req.method === 'OPTIONS') {
+    res.status(200).end()
+    return
+  }
+  return await fn(req, res)
+}
+
+function dolarPrice(request, response) {
   const url = 'https://www.dolarhoy.com';
   axios(url)
     .then(res => {
@@ -42,3 +51,5 @@ export default function dolarPrice(request, response) {
     .catch(err => console.log(err));
   // End axios HTTP request.
 }
+
+export default allowCors(dolarPrice);
