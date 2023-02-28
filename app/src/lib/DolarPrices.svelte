@@ -28,6 +28,6 @@
   });
 </script>
 
-{#each currencyPrices as price}
-  <DolarTile priceConfig={price} />
+{#each currencyPrices as priceDataItem}
+  <DolarTile priceConfig={priceDataItem} />
 {/each}
