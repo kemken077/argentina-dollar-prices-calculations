@@ -1,12 +1,21 @@
 <script>
-  import DolarMain from "./lib/DolarMain.svelte";
+  import DolarPrices from "./lib/DolarPrices.svelte";
   import Header from "./lib/Header.svelte";
-  import { SPANISH, ENGLISH } from './texts/languages';
+  import { SPANISH } from './texts/languages';
 </script>
 
 <main>
   <Header title={SPANISH.header.title} />
-  <DolarMain />
+  <section class="prices">
+    <DolarPrices />
+  </section>
+  <section class="calculations">
+    <!-- Calculation here. -->
+  </section>
 </main>
 
-<style></style>
+<style>
+  section {
+    max-width: 50%;
+  }
+</style>

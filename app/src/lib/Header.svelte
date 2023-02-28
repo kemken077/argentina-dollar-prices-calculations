@@ -3,13 +3,13 @@
 </script>
 
 <header>
-  <h1>{title}</h1>
+  <h1>{ title }</h1>
 </header>
 
 <style>
   h1 {
     margin-top: 0;
-    font-size: 1rem;
+    font-size: 18px;
   }
   header {
     min-height: 40px;
