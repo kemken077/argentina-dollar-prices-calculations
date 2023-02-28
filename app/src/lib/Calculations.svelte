@@ -1,26 +1,27 @@
 <script>
   import { ourPrice } from "../stores/stores";
+  import { SPANISH } from "../texts/languages";
   const inputPlaceholder = '0';
-  let result = null;
+  let inputAmountInPesos = null;
   let price = 0;
 
   ourPrice.subscribe(value => {
     price = value;
   });
 
-  $: calculatedPrice = result / price;
+  $: calculatedPrice = inputAmountInPesos / price;
 
 </script>
 
-<h1>Precio real del dolar (1 USD): ${price}</h1>
+<h1>{SPANISH.ourPrice.realPriceTitle} ${price}</h1>
 <input
   type=number
   name="comparison-input"
   id="comparisonInput"
   placeholder={inputPlaceholder}
-  bind:value={result} />
+  bind:value={inputAmountInPesos} />
 
-<h4>${result ? calculatedPrice.toFixed(2) : 0} USD</h4>
+<h4>${inputAmountInPesos ? calculatedPrice.toFixed(2) : 0} USD</h4>
 
 <style>
   input {

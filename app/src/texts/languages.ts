@@ -5,6 +5,9 @@ export const ENGLISH = {
   dolarTile: {
     buy: 'Buy:',
     sale: 'Sale:',
+  },
+  ourPrice: {
+    realPriceTitle: 'Real dollar price (1 USD) = ',
   }
 };
 
@@ -15,5 +18,8 @@ export const SPANISH = {
   dolarTile: {
     buy: 'Compra:',
     sale: 'Venta:',
+  },
+  ourPrice: {
+    realPriceTitle: 'Precio real del dolar (1 USD) = ',
   }
 };

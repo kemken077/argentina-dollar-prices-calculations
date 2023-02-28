@@ -1,5 +1,5 @@
 <script>
-  import { SPANISH, ENGLISH } from "../texts/languages";
+  import { SPANISH } from "../texts/languages";
   export let priceConfig = {
     currencyName: '',
     values: {
