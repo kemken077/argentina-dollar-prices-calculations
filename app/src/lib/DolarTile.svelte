@@ -13,9 +13,9 @@
 <h1>{priceConfig.currencyName}</h1>
 <ul>
   <li>{SPANISH.dolarTile.sale}</li>
-  <li>{priceConfig.values.buy}</li>
+  <li>${priceConfig.values.buy}</li>
   <li>{SPANISH.dolarTile.sale}</li>
-  <li>{priceConfig.values.sale}</li>
+  <li>${priceConfig.values.sale}</li>
 </ul>
 
 <style>
