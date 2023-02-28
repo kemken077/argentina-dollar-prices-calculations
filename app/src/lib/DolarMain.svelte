@@ -12,7 +12,6 @@
 
     try {
       const res = await axios.get(url);
-      console.log(res.data);
       currencyPrices = res.data;
     } catch (error) {
       console.log('Error: ', error);

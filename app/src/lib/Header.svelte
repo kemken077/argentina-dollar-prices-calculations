@@ -1,10 +1,20 @@
 <script>
-    import DolarMain from "./DolarMain.svelte";
-
   export let title = 'This is a default title';
 </script>
 
-<main>
+<header>
   <h1>{title}</h1>
-  <DolarMain />
-</main>
+</header>
+
+<style>
+  h1 {
+    margin-top: 0;
+    font-size: 1rem;
+  }
+  header {
+    min-height: 40px;
+    padding: 20px 20px 0;
+    text-align: left;
+    background-color: darkgrey;
+  }
+</style>
