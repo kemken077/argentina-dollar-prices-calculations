@@ -1,6 +1,7 @@
 <script>
   import { ourPrice } from "../stores/stores";
   import { SPANISH } from "../texts/languages";
+  import  { fomartAmountToCurrency } from '../utils/format';
   const inputPlaceholder = '0';
   let inputAmountInPesos = null;
   let price = 0;
@@ -10,6 +11,7 @@
   });
 
   $: calculatedPrice = inputAmountInPesos / price;
+  $: formattedPesos =  fomartAmountToCurrency(inputAmountInPesos); 
 
 </script>
 
@@ -23,7 +25,9 @@
     bind:value={inputAmountInPesos} />
 </div>
 
-<h4>${inputAmountInPesos ? calculatedPrice.toFixed(2) : 0} USD</h4>
+<h1 class="pesos">${formattedPesos ? formattedPesos : 0}</h1>
+<h3>Pesos argentinos son:</h3>
+<h1 class="dollars">${inputAmountInPesos && calculatedPrice ? fomartAmountToCurrency(calculatedPrice.toFixed(2)) : 0} USD</h1>
 
 <style>
   input::placeholder {
@@ -42,12 +46,32 @@
     border-radius: 10px;
     display: block;
     width: 94%;
-    height: 140px;
+    height: 90px;
     box-sizing: border-box;
     padding: 20px;
   }
-  h4 {
+  h3 {
+    margin: 0;
+  }
+  h1 {
     font-size: 28px;
+  }
+  h1.pesos,
+  h1.dollars {
+    font-size: 36px;
+  }
+  h1.dollars {
+    margin: 20px auto;
+    box-sizing: border-box;
+    color: #79a471;
+    background-color: #fefeea;
+    padding: 20px;
+    width: 94%;
+    border-radius: 10px;
+    display: block;
+  }
+  h1.pesos {
+    margin-bottom: 0;
   }
   @media screen and (max-width: 1024px) {
     h1 {
