@@ -27,7 +27,7 @@
 
 <h1 class="pesos">${formattedPesos ? formattedPesos : 0}</h1>
 <h3>Pesos argentinos son:</h3>
-<h1 class="dollars">${inputAmountInPesos && calculatedPrice ? fomartAmountToCurrency(calculatedPrice.toFixed(2)) : 0} USD</h1>
+<h1 class="dollars">USD ${inputAmountInPesos && calculatedPrice ? fomartAmountToCurrency(calculatedPrice.toFixed(2)) : 0}</h1>
 
 <style>
   input::placeholder {
