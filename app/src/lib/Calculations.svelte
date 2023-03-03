@@ -36,7 +36,7 @@
   input {
     font-size: 62px;
     color: #278664;
-    margin: 20px auto;
+    margin: 0 auto 20px;
     background-color: #fefeea;
     border: none;
     border-radius: 10px;
