@@ -52,9 +52,11 @@
   }
   h3 {
     margin: 0;
+    color: #fefeea;
   }
   h1 {
     font-size: 28px;
+    color: #fefeea;
   }
   h1.pesos,
   h1.dollars {
@@ -72,6 +74,7 @@
   }
   h1.pesos {
     margin-bottom: 0;
+    color: #fefeea;
   }
   @media screen and (max-width: 1024px) {
     h1 {

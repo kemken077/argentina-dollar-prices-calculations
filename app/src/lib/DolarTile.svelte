@@ -25,6 +25,7 @@
     box-sizing: border-box;
     padding: 10px;
     background: #79A471;
+    color: #fefeea;
   }
   .dolar-tile:hover {
     background: #278664;
@@ -32,6 +33,7 @@
   h1 {
     margin-bottom: 10px;
     margin-top: 0;
+    color: #fefeea;
   }
   ul {
     list-style-type: none;
@@ -40,6 +42,7 @@
   }
   ul li {
     text-align: left;
+    color: #fefeea;
   }
   /* #676e5d */
   /* #79a471 */
