@@ -8,27 +8,22 @@
 <main>
   <Header title={SPANISH.header.title} />
   <div class="container">
-    <section class="prices">
-      <DolarPrices />
-    </section>
     <section class="calculations">
       <Calculations />
+    </section>
+    <section class="prices">
+      <DolarPrices />
     </section>
   </div>
 </main>
 
 <style>
   .container {
-    display: flex;
+    margin: 0 auto;
+    text-align: center;
   }
   section {
-    max-width: 50%;
-    width: 50%;
-  }
-  @media screen and (max-width: 1024px) {
-    section {
-      max-width: 100%;
-      width: 100%;
-    }
+    max-width: 100%;
+    width: 100%;
   }
 </style>
