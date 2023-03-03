@@ -12,7 +12,7 @@
 <div class="dolar-tile">
   <h1>{priceConfig.currencyName}</h1>
   <ul>
-    <li>{SPANISH.dolarTile.sale}: {priceConfig.values.buy ? `${priceConfig.values.buy}` : 'no hay precio para este item'}</li>
+    <li>{SPANISH.dolarTile.buy}: {priceConfig.values.buy ? `${priceConfig.values.buy}` : 'no hay precio para este item'}</li>
     <li>{SPANISH.dolarTile.sale}: ${priceConfig.values.sale}</li>
   </ul>
 </div>
