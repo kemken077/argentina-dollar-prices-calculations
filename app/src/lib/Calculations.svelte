@@ -21,7 +21,7 @@
 </script>
 
 <div class={`calculations ${mode === 'dollars' ? 'dollars': 'pesos'}`}>
-  <h1>{SPANISH.ourPrice.realPriceTitle} ${price}</h1>
+  <h1>{SPANISH.ourPrice.realPriceTitle} AR ${price}</h1>
   {#if mode === 'dollars'}
     <div class="input-container dollars">
       <input
