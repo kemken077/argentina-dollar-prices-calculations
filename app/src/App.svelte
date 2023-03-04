@@ -52,7 +52,7 @@
   }
   section.mode-trigger button {
     height: 80px;
-    width: 46%;
+    width: 44%;
   }
   button.selected {
     outline: none;

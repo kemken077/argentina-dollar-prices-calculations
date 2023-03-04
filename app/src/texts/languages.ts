@@ -11,8 +11,8 @@ export const ENGLISH = {
   },
   calculationTrigger: {
     buttons: {
-      dollars: 'Calculate dollars',
-      pesos: 'Calculate pesos'
+      dollars: 'Calculate in dollars',
+      pesos: 'Calculate in pesos'
     }
   },
 };
@@ -30,8 +30,8 @@ export const SPANISH = {
   },
   calculationTrigger: {
     buttons: {
-      dollars: 'Calcular dólares',
-      pesos: 'Calcular pesos'
+      dollars: 'Calcular en dólares',
+      pesos: 'Calcular en pesos'
     }
   },
 };
