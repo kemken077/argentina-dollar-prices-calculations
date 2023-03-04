@@ -58,9 +58,10 @@
   .calculations {
     padding: 20px;
     box-sizing: border-box;
+    margin-bottom: 20px;
   }
   .calculations.dollars {
-    background: #676E5D;
+    background: #278664;
   }
   .calculations.pesos {
     background: #DF551E;
