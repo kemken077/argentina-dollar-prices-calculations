@@ -2,35 +2,70 @@
   import { ourPrice } from "../stores/stores";
   import { SPANISH } from "../texts/languages";
   import  { fomartAmountToCurrency } from '../utils/format';
+  export let mode = 'dollars';
+
   const inputPlaceholder = '0';
   let inputAmountInPesos = null;
+  let inputAmountInDollars = null;
   let price = 0;
 
   ourPrice.subscribe(value => {
     price = value;
   });
 
-  $: calculatedPrice = inputAmountInPesos / price;
+  $: calculatedPriceDollars = inputAmountInPesos / price;
+  $: calculatedPricePesos = price * inputAmountInDollars ;
   $: formattedPesos =  fomartAmountToCurrency(inputAmountInPesos); 
+  $: formattedDollars =  fomartAmountToCurrency(inputAmountInDollars);
 
 </script>
 
-<h1>{SPANISH.ourPrice.realPriceTitle} ${price}</h1>
-<div class="input-container">
-  <input
-    type=number
-    name="comparison-input"
-    id="comparisonInput"
-    placeholder={inputPlaceholder}
-    bind:value={inputAmountInPesos} />
+<div class={`calculations ${mode === 'dollars' ? 'dollars': 'pesos'}`}>
+  <h1>{SPANISH.ourPrice.realPriceTitle} ${price}</h1>
+  {#if mode === 'dollars'}
+    <div class="input-container dollars">
+      <input
+        type=number
+        name="comparison-input"
+        id="comparisonInput"
+        min=0
+        placeholder={inputPlaceholder}
+        bind:value={inputAmountInPesos} />
+    </div>
+    <h1 class="pesos">AR ${formattedPesos ? formattedPesos : 0}</h1>
+    <h3>son:</h3>
+    <h1 class="dollars">USD ${inputAmountInPesos && calculatedPriceDollars ? fomartAmountToCurrency(calculatedPriceDollars.toFixed(2)) : 0}</h1>
+  {/if}
+
+  {#if mode === 'pesos'}
+    <div class="input-container pesos">
+      <input
+        type=number
+        name="comparison-input"
+        id="comparisonInput"
+        max=10
+        placeholder={inputPlaceholder}
+        bind:value={inputAmountInDollars} />
+    </div>
+    <h1 class="pesos">USD ${formattedDollars ? formattedDollars : 0}</h1>
+    <h3>son:</h3>
+    <h1 class="result-dollars">AR ${inputAmountInDollars && calculatedPricePesos ? fomartAmountToCurrency(calculatedPricePesos.toFixed(2)) : 0}</h1>
+  {/if}
 </div>
 
-<h1 class="pesos">${formattedPesos ? formattedPesos : 0}</h1>
-<h3>Pesos argentinos son:</h3>
-<h1 class="dollars">USD ${inputAmountInPesos && calculatedPrice ? fomartAmountToCurrency(calculatedPrice.toFixed(2)) : 0}</h1>
 
 <style>
-  input::placeholder {
+  .calculations {
+    padding: 20px;
+    box-sizing: border-box;
+  }
+  .calculations.dollars {
+    background: #676E5D;
+  }
+  .calculations.pesos {
+    background: #DF551E;
+  }
+   input::placeholder {
     color: #4e594a;
   }
   input:focus-visible {
@@ -50,6 +85,9 @@
     box-sizing: border-box;
     padding: 20px;
   }
+  .calculations.pesos input {
+    color: #DF551E;
+  }
   h3 {
     margin: 0;
     color: #fefeea;
@@ -62,15 +100,22 @@
   h1.dollars {
     font-size: 36px;
   }
-  h1.dollars {
+  h1.dollars,
+  h1.result-dollars {
     margin: 20px auto;
     box-sizing: border-box;
-    color: #79a471;
     background-color: #fefeea;
     padding: 20px;
     width: 94%;
     border-radius: 10px;
     display: block;
+  }
+  h1.result-dollars {
+    font-size: 22px;
+    color: #DF551E;
+  }
+  h1.dollars {
+    color: #79a471;
   }
   h1.pesos {
     margin-bottom: 0;
