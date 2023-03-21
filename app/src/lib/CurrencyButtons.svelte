@@ -17,17 +17,15 @@
 </script>
 
 <div class="currency-buttons">
-  <Group>
+  <Group variant="raised">
     <Button
       on:click={handleModeButton}
-      id="dollarsButton"
-      class="{mode === 'dollars' ? 'selected' : ''}">
+      color="primary">
       <Label>{SPANISH.calculationTrigger.buttons.dollars}</Label>
     </Button>
     <Button
-      id="pesosButton"
       on:click={handleModeButton}
-      class="{mode === 'pesos' ? 'selected' : ''}">
+      color="secondary">
       <Label>{SPANISH.calculationTrigger.buttons.pesos}</Label>
     </Button>
   </Group>
