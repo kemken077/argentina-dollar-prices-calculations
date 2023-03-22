@@ -1,5 +1,6 @@
 <script>
   import Loader from './lib/Loader.svelte';
+  // Make request here to make loader take whatever the API request takes.
 </script>
 
 
