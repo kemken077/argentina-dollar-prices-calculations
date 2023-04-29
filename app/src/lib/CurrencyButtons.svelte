@@ -10,7 +10,6 @@
 
   const handleModeButton = (event) => {
     const id = event.target.id;
-    console.log(`click on ${id}`);
     mode = id === 'dollarsButton' ? 'dollars' : 'pesos';
     calculationMode.set(mode);
   };
@@ -19,14 +18,16 @@
 <div class="currency-buttons">
   <Group variant="raised">
     <Button
+      id="dollars"
       on:click={handleModeButton}
       color="primary">
-      <Label>{SPANISH.calculationTrigger.buttons.dollars}</Label>
+      {SPANISH.calculationTrigger.buttons.dollars}
     </Button>
     <Button
+      id="pesos"
       on:click={handleModeButton}
       color="secondary">
-      <Label>{SPANISH.calculationTrigger.buttons.pesos}</Label>
+      {SPANISH.calculationTrigger.buttons.pesos}
     </Button>
   </Group>
 </div>
