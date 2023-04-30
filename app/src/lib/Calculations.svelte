@@ -3,7 +3,7 @@
   import { calculationMode } from '../stores/stores';
   import { SPANISH } from "../texts/languages";
   import  { fomartAmountToCurrency } from '../utils/format';
-  export let mode;
+  let mode;
 
   const inputPlaceholder = '0';
   let inputAmountInPesos = null;

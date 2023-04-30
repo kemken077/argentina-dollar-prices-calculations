@@ -17,10 +17,10 @@
   <Header title={SPANISH.header.title} />
   <div class="container">
     <section class="mode-trigger">
-      <CurrencyButtons mode={selectedMode} />
+      <CurrencyButtons />
     </section>
     <section class="calculations">
-      <Calculations mode={selectedMode} />
+      <Calculations />
     </section>
     <section class="prices">
       <DolarPrices />
