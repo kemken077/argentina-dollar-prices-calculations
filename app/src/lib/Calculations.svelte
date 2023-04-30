@@ -101,6 +101,7 @@
   h1 {
     font-size: 28px;
     color: #fefeea;
+    margin-bottom: 20px;
   }
   h1.pesos,
   h1.dollars {

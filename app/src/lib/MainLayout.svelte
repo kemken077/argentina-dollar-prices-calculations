@@ -1,11 +1,12 @@
 
 <script>
   import Calculations from "./Calculations.svelte";
-  import CurrencyButtons from "./CurrencyButtons.svelte";
   import DolarPrices from "./DolarPrices.svelte";
   import Header from "./Header.svelte";
   import { SPANISH } from '../texts/languages';
   import { calculationMode } from "../stores/stores";
+  import SelectCurrency from "./SelectCurrency.svelte";
+  import "carbon-components-svelte/css/all.css";
 
   let selectedMode;
   calculationMode.subscribe(newStoredMode => {
@@ -17,7 +18,7 @@
   <Header title={SPANISH.header.title} />
   <div class="container">
     <section class="mode-trigger">
-      <CurrencyButtons />
+      <SelectCurrency />
     </section>
     <section class="calculations">
       <Calculations />

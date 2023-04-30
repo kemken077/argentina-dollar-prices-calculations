@@ -7,7 +7,7 @@ export const ENGLISH = {
     sale: 'Sale:',
   },
   ourPrice: {
-    realPriceTitle: 'Real dollar price (1 USD) = ',
+    realPriceTitle: '(1 USD) = ',
   },
   calculationTrigger: {
     buttons: {
@@ -26,7 +26,7 @@ export const SPANISH = {
     sale: 'Venta:',
   },
   ourPrice: {
-    realPriceTitle: 'Precio real del dolar (1 USD) = ',
+    realPriceTitle: '(1 USD) = ',
   },
   calculationTrigger: {
     buttons: {
