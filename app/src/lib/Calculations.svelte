@@ -1,16 +1,21 @@
 <script>
   import { ourPrice } from "../stores/stores";
+  import { calculationMode } from '../stores/stores';
   import { SPANISH } from "../texts/languages";
   import  { fomartAmountToCurrency } from '../utils/format';
-  export let mode = 'dollars';
+  export let mode;
 
   const inputPlaceholder = '0';
   let inputAmountInPesos = null;
   let inputAmountInDollars = null;
   let price = 0;
 
-  ourPrice.subscribe(value => {
-    price = value;
+  ourPrice.subscribe((newPrice) => {
+    price = newPrice;
+  });
+
+  calculationMode.subscribe((newMode) => {
+    mode = newMode;
   });
 
   $: calculatedPriceDollars = inputAmountInPesos / price;
