@@ -6,12 +6,10 @@
     dollars: 'dollars',
     pesos: 'pesos',
   };
-  export let mode = modes. dollars;
+  export const mode = modes. dollars;
 
   const handleModeButton = (event) => {
-    const id = event.target.id;
-    mode = id === 'dollarsButton' ? 'dollars' : 'pesos';
-    calculationMode.set(mode);
+    calculationMode.set(event.target.id);
   };
 </script>
 
