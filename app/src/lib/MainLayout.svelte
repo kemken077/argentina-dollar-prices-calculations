@@ -6,7 +6,7 @@
   import Header from "./Header.svelte";
   import { SPANISH } from '../texts/languages';
   import SelectCurrency from "./SelectCurrency.svelte";
-  import { API, getEndpoint } from "../config/api";
+  import { getEndpoint } from "../config/api";
     import axios from "axios";
 
   onMount(async () => {

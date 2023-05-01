@@ -1,7 +1,7 @@
 <script>
   import { onMount } from "svelte";
   import axios from 'axios';
-  import { API } from '../config/api';
+  import { getEndpoint } from '../config/api';
   import DolarTile from "./DolarTile.svelte";
   import { ourPrice } from "../stores/stores";
 
@@ -14,12 +14,11 @@
   }
 
   onMount(async () => {
-    const domain = API.domain;
-    const endpoint = API.endpoints.dolarPrice;
-    const url = `${domain}${endpoint}`;
+    const endpoint = 'dolarPrice';
+    const dolarPriceEndpoint = getEndpoint(endpoint)
 
     try {
-      const res = await axios.get(url);
+      const res = await axios.get(dolarPriceEndpoint);
       currencyPrices = res.data;
       getOurPrice(currencyPrices[0].values.buy, currencyPrices[0].values.sale);
     } catch (error) {

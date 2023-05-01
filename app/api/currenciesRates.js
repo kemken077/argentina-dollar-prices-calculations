@@ -19,7 +19,8 @@ const allowCors = fn => async (req, res) => {
 
 function currenciesRates(request, response) {
   const _API_KEY = 'af96sub64uoicr3kvgd8ao7dctbtrrodbq6qrre45ioq8aj2rs2us8'; 
-  const url = `https://anyapi.io/api/v1/exchange/rates?apiKey=${_API_KEY}`;
+  const base = 'USD';
+  const url = `https://anyapi.io/api/v1/exchange/rates?apiKey=${_API_KEY}&base=${base}`;
   axios(url)
     .then(res => {
       const rates = res.data;
