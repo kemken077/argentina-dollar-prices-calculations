@@ -9,7 +9,7 @@ export default defineConfig({
       external: [
         /node_modules/,
       '/node_modules/carbon-components-svelte/css/all.css',
-      '/node_modules/carbon-components-svelte/*']
+      '/node_modules/carbon-components-svelte']
     }
   }
 })
