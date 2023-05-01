@@ -6,7 +6,7 @@ export default defineConfig({
   plugins: [svelte()],
   build: {
     rollupOptions: {
-      external: 'carbon-components-svelte/css/all.css'
+      external: ['carbon-components-svelte/css/all.css', 'carbon-components-svelte']
     }
   }
 })
