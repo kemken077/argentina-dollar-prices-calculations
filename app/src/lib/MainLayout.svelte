@@ -1,10 +1,26 @@
 
 <script>
+  import { onMount } from "svelte";
   import Calculations from "./Calculations.svelte";
   import DolarPrices from "./DolarPrices.svelte";
   import Header from "./Header.svelte";
   import { SPANISH } from '../texts/languages';
   import SelectCurrency from "./SelectCurrency.svelte";
+  import { API, getEndpoint } from "../config/api";
+    import axios from "axios";
+
+  onMount(async () => {
+    const currenciesEndpoint = 'currenciesRates';
+    const ratesURL = getEndpoint(currenciesEndpoint);
+    try {
+      const ratesResponse = await axios.get(ratesURL);
+      const rates = ratesResponse.data;
+      console.log({rates});
+    } catch (error) {
+      console.error('Rates response ERROR: ', error);
+    }
+
+  });
 </script>
 
 <svelte:head>
