@@ -6,11 +6,6 @@
   import { SPANISH } from '../texts/languages';
   import { calculationMode } from "../stores/stores";
   import SelectCurrency from "./SelectCurrency.svelte";
-
-  let selectedMode;
-  calculationMode.subscribe(newStoredMode => {
-    selectedMode = newStoredMode;
-  });
 </script>
 
 <svelte:head>
