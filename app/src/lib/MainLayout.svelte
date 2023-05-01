@@ -4,7 +4,6 @@
   import DolarPrices from "./DolarPrices.svelte";
   import Header from "./Header.svelte";
   import { SPANISH } from '../texts/languages';
-  import { calculationMode } from "../stores/stores";
   import SelectCurrency from "./SelectCurrency.svelte";
 </script>
 
