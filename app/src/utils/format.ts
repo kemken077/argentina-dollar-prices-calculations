@@ -17,7 +17,7 @@ export const format = (node, formatFunction) => {
   }
 }
 
-export const fomartAmountToCurrency = (/** @type {string} */ amount) => {
+export const formatAmountToCurrency = (/** @type {string} */ amount) => {
   if (amount) {
     return parseFloat(amount).toLocaleString('en-US', {
       style: 'decimal',

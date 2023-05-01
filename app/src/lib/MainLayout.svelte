@@ -7,7 +7,8 @@
   import { SPANISH } from '../texts/languages';
   import SelectCurrency from "./SelectCurrency.svelte";
   import { getEndpoint } from "../config/api";
-    import axios from "axios";
+  import axios from "axios";
+  import { ratesUSDBased } from '../stores/stores';
 
   onMount(async () => {
     const currenciesEndpoint = 'currenciesRates';
@@ -15,7 +16,7 @@
     try {
       const ratesResponse = await axios.get(ratesURL);
       const rates = ratesResponse.data;
-      console.log({rates});
+      ratesUSDBased.set(rates.rates);
     } catch (error) {
       console.error('Rates response ERROR: ', error);
     }

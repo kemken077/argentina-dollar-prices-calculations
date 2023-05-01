@@ -1,6 +1,8 @@
 <script>
   import { ComboBox } from "carbon-components-svelte";
   import { calculationMode } from '../stores/stores';
+
+  let selected = 0;
   const currencies = [
     {id: 0, text: 'USD - US Dollar', label: 'dollars'},
     {id: 1, text: 'ARS - Argentinian Peso', label: 'pesos'},
@@ -15,23 +17,14 @@
   function handleSelect(event) {
     const currencyMode = event.detail.selectedItem.label;
     calculationMode.set(currencyMode);
-  }
-  /**
-     * @param {number} id
-     * @param {string} text
-     */
-  function getComboItem(id, text) {
-    const item = {
-      id,
-      text,
-    }; 
-    return item;
+    selected = event.detail.selectedItem.id;
   }
 </script>
 
 <ComboBox
   titleText=""
   placeholder="Elige una divisa"
+  selectedId="{selected}"
   items={currencies}
   on:select={handleSelect}
 />
