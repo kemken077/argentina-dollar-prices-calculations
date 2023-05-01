@@ -1,17 +1,24 @@
 <script>
   import { ourPrice } from "../stores/stores";
-  import { calculationMode } from '../stores/stores';
-  import { SPANISH } from "../texts/languages";
-  import  { fomartAmountToCurrency } from '../utils/format';
+  import { calculationMode, ratesUSDBased } from '../stores/stores';
+  import  { formatAmountToCurrency } from '../utils/format';
   let mode;
 
   // Generic
   let inputAmount = 0;
-  // End generic
-
+  let rates;
+  const currenciesIDs = {
+    dollars: 'USD',
+    pesos: 'ARS',
+    real: 'BRL',
+    euro: 'EUR',
+    pound: 'GBP',
+    ausdollar: 'AUD',
+    candollar: 'CAD',
+    yen: 'JPY',
+    yuan: 'CNY',
+  };
   const inputPlaceholder = '0';
-  let inputAmountInPesos = null;
-  let inputAmountInDollars = null;
   let price = 0;
 
   ourPrice.subscribe((newPrice) => {
@@ -22,17 +29,47 @@
     mode = newMode;
   });
 
-  $: calculatedPriceDollars = inputAmountInPesos / price;
-  $: calculatedPricePesos = price * inputAmountInDollars ;
-  $: formattedPesos =  fomartAmountToCurrency(inputAmountInPesos); 
-  $: formattedDollars =  fomartAmountToCurrency(inputAmountInDollars);
+  ratesUSDBased.subscribe((newRates) => {
+    rates = newRates;
+  });
+
+  /**
+     * @param {number} inputAmount
+     */
+  function getCalculatedCurrencyPrice(inputAmount) {
+    const currencyID = currenciesIDs[mode];
+    const rate = rates[currencyID];
+    const blueDollarPrice = price;
+    let currencyPriceInDollars = inputAmount;
+    if (!rate) { // ARS
+      currencyPriceInDollars = inputAmount;
+    } else if (rate === 1) { // USD
+      currencyPriceInDollars = inputAmount * blueDollarPrice;
+    } else {
+      currencyPriceInDollars = (inputAmount / rate) * blueDollarPrice;
+    }
+    return currencyPriceInDollars;
+  }
+
+  /**
+     * @param {number} mode
+     */
+  function getPesoCurrencyValue(mode) {
+    const currencyID = currenciesIDs[mode];
+    const rate = rates[currencyID];
+    return (1 / rate) * price;
+  }
+
+  // Generic
+  $: formattedInput = formatAmountToCurrency(inputAmount);
+  $: calculatedCurrencyPrice = formatAmountToCurrency(getCalculatedCurrencyPrice(inputAmount));
+  $: pesoCurrencyValue = formatAmountToCurrency(getPesoCurrencyValue(mode));
+  // End generic
 
 </script>
 
 <div class={`calculations ${mode}`}>
-  <h1>{SPANISH.ourPrice.realPriceTitle} AR ${price}</h1>
-
-  <!-- Generic -->
+  <h1 class="unit-price">(1 {currenciesIDs[mode]}) =  ${pesoCurrencyValue ? pesoCurrencyValue : price} {currenciesIDs.pesos}</h1>
   <div class={`input-container ${mode}`}>
     <input
       type=number
@@ -42,39 +79,9 @@
       placeholder={inputPlaceholder}
       bind:value={inputAmount} />
   </div>
-  <!-- End generic -->
-
-
-
-  {#if mode === 'dollars'}
-    <div class="input-container dollars">
-      <input
-        type=number
-        name="comparison-input"
-        id="comparisonInput"
-        min=0
-        placeholder={inputPlaceholder}
-        bind:value={inputAmountInPesos} />
-    </div>
-    <h1 class="pesos">AR ${formattedPesos ? formattedPesos : 0}</h1>
-    <h3>son:</h3>
-    <h1 class="dollars">USD ${inputAmountInPesos && calculatedPriceDollars ? fomartAmountToCurrency(calculatedPriceDollars.toFixed(2)) : 0}</h1>
-  {/if}
-
-  {#if mode === 'pesos'}
-    <div class="input-container pesos">
-      <input
-        type=number
-        name="comparison-input"
-        id="comparisonInput"
-        max=10
-        placeholder={inputPlaceholder}
-        bind:value={inputAmountInDollars} />
-    </div>
-    <h1 class="pesos">USD ${formattedDollars ? formattedDollars : 0}</h1>
-    <h3>son:</h3>
-    <h1 class="result-dollars">AR ${inputAmountInDollars && calculatedPricePesos ? fomartAmountToCurrency(calculatedPricePesos.toFixed(2)) : 0}</h1>
-  {/if}
+  <h1>${formattedInput ? formattedInput : 0} {mode}</h1>
+  <h3>son:</h3>
+  <h2>{currenciesIDs.pesos} ${calculatedCurrencyPrice ? calculatedCurrencyPrice : 0}</h2>
 </div>
 
 
@@ -94,10 +101,10 @@
     background: yellowgreen;
   }
   .calculations.euro {
-    background: blue;
+    background: lightblue;
   }
   .calculations.pound {
-    background: rgb(8, 8, 52);
+    background: rgb(187, 85, 157);
   }
   .calculations.ausdollar {
     background: green;
@@ -110,6 +117,10 @@
   }
   .calculations.yuan {
     background: red;
+  }
+
+  .calculations h1.unit-price {
+    margin-bottom: 10px;
   }
    input::placeholder {
     color: #4e594a;
@@ -133,40 +144,6 @@
   }
   .calculations.pesos input {
     color: #DF551E;
-  }
-  h3 {
-    margin: 0;
-    color: #fefeea;
-  }
-  h1 {
-    font-size: 28px;
-    color: #fefeea;
-    margin-bottom: 20px;
-  }
-  h1.pesos,
-  h1.dollars {
-    font-size: 36px;
-  }
-  h1.dollars,
-  h1.result-dollars {
-    margin: 20px auto;
-    box-sizing: border-box;
-    background-color: #fefeea;
-    padding: 20px;
-    width: 94%;
-    border-radius: 10px;
-    display: block;
-  }
-  h1.result-dollars {
-    font-size: 22px;
-    color: #DF551E;
-  }
-  h1.dollars {
-    color: #79a471;
-  }
-  h1.pesos {
-    margin-bottom: 0;
-    color: #fefeea;
   }
   @media screen and (max-width: 1024px) {
     h1 {
