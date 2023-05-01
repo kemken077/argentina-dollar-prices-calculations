@@ -19,7 +19,7 @@ export const ENGLISH = {
 
 export const SPANISH = {
   header: {
-    title: 'El valor real del peso argentino.'
+    title: 'El valor real del peso argentino'
   },
   dolarTile: {
     buy: 'Compra:',

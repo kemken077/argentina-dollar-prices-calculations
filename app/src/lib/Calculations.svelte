@@ -168,5 +168,8 @@
     input {
       font-size: 40px;
     }
+    input::placeholder {
+      font-size: 16px;
+    }
   }
 </style>

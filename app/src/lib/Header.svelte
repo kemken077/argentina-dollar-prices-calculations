@@ -18,4 +18,10 @@
     text-align: left;
     background-color: #fefeea; 
   }
+  @media screen and (max-width: 1024px) {
+    h1 {
+      font-size: 14px;
+      margin-top: 2px;
+    }
+  }
 </style>
