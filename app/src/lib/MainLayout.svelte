@@ -6,7 +6,6 @@
   import { SPANISH } from '../texts/languages';
   import { calculationMode } from "../stores/stores";
   import SelectCurrency from "./SelectCurrency.svelte";
-  import "carbon-components-svelte/css/all.css";
 
   let selectedMode;
   calculationMode.subscribe(newStoredMode => {
