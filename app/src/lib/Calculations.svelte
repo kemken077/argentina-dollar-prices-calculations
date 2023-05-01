@@ -5,6 +5,10 @@
   import  { fomartAmountToCurrency } from '../utils/format';
   let mode;
 
+  // Generic
+  let inputAmount = 0;
+  // End generic
+
   const inputPlaceholder = '0';
   let inputAmountInPesos = null;
   let inputAmountInDollars = null;
@@ -25,8 +29,23 @@
 
 </script>
 
-<div class={`calculations ${mode === 'dollars' ? 'dollars': 'pesos'}`}>
+<div class={`calculations ${mode}`}>
   <h1>{SPANISH.ourPrice.realPriceTitle} AR ${price}</h1>
+
+  <!-- Generic -->
+  <div class={`input-container ${mode}`}>
+    <input
+      type=number
+      name="comparison-input"
+      id="comparisonInput"
+      min=0
+      placeholder={inputPlaceholder}
+      bind:value={inputAmount} />
+  </div>
+  <!-- End generic -->
+
+
+
   {#if mode === 'dollars'}
     <div class="input-container dollars">
       <input
@@ -69,7 +88,28 @@
     background: #278664;
   }
   .calculations.pesos {
-    background: #DF551E;
+    background: violet;
+  }
+  .calculations.real {
+    background: yellowgreen;
+  }
+  .calculations.euro {
+    background: blue;
+  }
+  .calculations.pound {
+    background: rgb(8, 8, 52);
+  }
+  .calculations.ausdollar {
+    background: green;
+  }
+  .calculations.candollar {
+    background: burlywood;
+  }
+  .calculations.yen {
+    background: white;
+  }
+  .calculations.yuan {
+    background: red;
   }
    input::placeholder {
     color: #4e594a;
