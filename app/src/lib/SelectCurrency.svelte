@@ -3,7 +3,7 @@
   import { calculationMode } from '../stores/stores';
   const currencies = [
     {id: 0, text: 'USD - US Dollar', label: 'dollars'},
-    {id: 1, text: 'ARS - Argentina Peso', label: 'pesos'},
+    {id: 1, text: 'ARS - Argentinian Peso', label: 'pesos'},
     {id: 2, text: 'BRL - Brazilian Real', label: 'real'},
     {id: 3, text: 'EUR - Euro', label: 'euro'},
     {id: 4, text: 'GBP - British Pound', label: 'pound'},
