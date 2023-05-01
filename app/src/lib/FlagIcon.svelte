@@ -18,7 +18,7 @@
      * @param {string} countryID
      */
   function getImageSource(countryID) {
-    return `../../public/flags/svg/${countries[countryID]}${extention}`;
+    return `../../public/static/flags/svg/${countries[countryID]}${extention}`;
   }
 
   $: imageSource = getImageSource(countryID);
