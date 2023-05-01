@@ -8,8 +8,11 @@ export default defineConfig({
     rollupOptions: {
       external: [
         /node_modules/,
-      './node_modules/carbon-components-svelte/css/all.css',
-      './node_modules/carbon-components-svelte']
-    }
-  }
+        './node_modules/carbon-components-svelte/css/all.css',
+        '/carbon-components-svelte/css/all.css',
+        './node_modules/carbon-components-svelte',
+        '/carbon-components-svelte',
+      ],
+    },
+  },
 })
