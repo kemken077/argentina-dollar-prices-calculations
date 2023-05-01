@@ -15,8 +15,8 @@
   };
 
   /**
-     * @param {string} countryID
-     */
+  * @param {string} countryID
+  */
   function getImageSource(countryID) {
     return `/static/flags/svg/${countries[countryID]}${extention}`;
   }
@@ -32,5 +32,8 @@
 <style>
   .flag-wrapper {
     width: 40px;
+    position: relative;
+    top: -8px;
+    margin: 0 auto;
   }
 </style>
