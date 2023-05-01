@@ -20,7 +20,6 @@
     } catch (error) {
       console.error('Rates response ERROR: ', error);
     }
-
   });
 </script>
 
@@ -53,6 +52,7 @@
   section {
     max-width: 100%;
     width: 100%;
+    padding: 0 20px;
   }
   section.mode-trigger {
     margin: 20px auto;

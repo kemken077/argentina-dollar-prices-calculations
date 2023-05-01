@@ -86,9 +86,11 @@
       placeholder={inputPlaceholder}
       bind:value={inputAmount} />
   </div>
-  <h1>${formattedInput ? formattedInput : 0} {mode}</h1>
-  <h3>son:</h3>
-  <h2>{currenciesIDs.pesos} ${calculatedCurrencyPrice ? calculatedCurrencyPrice : 0}</h2>
+  <h1>{currenciesIDs[mode]} ${formattedInput ? formattedInput : 0}</h1>
+  <h3>
+    son:
+  </h3>
+  <h2><span><FlagIcon countryID="ARS" className="ar" /></span> <span>{currenciesIDs.pesos} ${calculatedCurrencyPrice ? calculatedCurrencyPrice : 0}</span></h2>
 </div>
 
 
@@ -99,7 +101,7 @@
     margin-bottom: 20px;
   }
   .calculations.dollars {
-    background: #278664;
+    background: pink;
   }
   .calculations.pesos {
     background: violet;

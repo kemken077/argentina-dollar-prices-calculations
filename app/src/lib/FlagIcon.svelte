@@ -1,5 +1,6 @@
 <script>
   export let countryID;
+  export let className = '';
   let alt = `Flag image icon`;
   const extention = '.svg';
   const countries = {
@@ -25,7 +26,7 @@
 
 </script>
 
-<div class="flag-wrapper">
+<div class="{`flag-wrapper ${className}`}">
   <img src={imageSource} {alt} />
 </div>
 
@@ -35,5 +36,8 @@
     position: relative;
     top: -8px;
     margin: 0 auto;
+  }
+  .flag-wrapper.ar {
+    top: 6px;
   }
 </style>
