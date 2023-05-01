@@ -13,6 +13,12 @@
   });
 </script>
 
+<svelte:head>
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/carbon-components-svelte/css/all.css"
+/>
+</svelte:head>
 <main>
   <Header title={SPANISH.header.title} />
   <div class="container">
