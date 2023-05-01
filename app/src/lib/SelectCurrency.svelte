@@ -14,8 +14,6 @@
   ];
   function handleSelect(event) {
     const currencyMode = event.detail.selectedItem.label;
-    console.log({event, currencyText: event.detail.selectedItem.text});
-    console.log({event, currencyLabel: event.detail.selectedItem.label});
     calculationMode.set(currencyMode);
   }
   /**
