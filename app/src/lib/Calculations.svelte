@@ -4,8 +4,7 @@
   import  { formatAmountToCurrency } from '../utils/format';
   let mode;
 
-  // Generic
-  let inputAmount = 0;
+  let inputAmount;
   let rates;
   const currenciesIDs = {
     dollars: 'USD',
@@ -18,7 +17,6 @@
     yen: 'JPY',
     yuan: 'CNY',
   };
-  const inputPlaceholder = '0';
   let price = 0;
 
   ourPrice.subscribe((newPrice) => {
@@ -35,9 +33,10 @@
 
   /**
      * @param {number} inputAmount
+     * @param {string | number} modeArg
      */
-  function getCalculatedCurrencyPrice(inputAmount) {
-    const currencyID = currenciesIDs[mode];
+  function getCalculatedCurrencyPrice(inputAmount, modeArg) {
+    const currencyID = currenciesIDs[modeArg];
     const rate = rates[currencyID];
     const blueDollarPrice = price;
     let currencyPriceInDollars = inputAmount;
@@ -60,11 +59,17 @@
     return (1 / rate) * price;
   }
 
-  // Generic
+  /**
+     * @param {string} mode
+     */
+  function getAmountPlaceholderByCurrency(mode) {
+    return `Ingrese su monto en $(${currenciesIDs[mode]})`;
+  }
+
   $: formattedInput = formatAmountToCurrency(inputAmount);
-  $: calculatedCurrencyPrice = formatAmountToCurrency(getCalculatedCurrencyPrice(inputAmount));
+  $: calculatedCurrencyPrice = formatAmountToCurrency(getCalculatedCurrencyPrice(inputAmount, mode));
   $: pesoCurrencyValue = formatAmountToCurrency(getPesoCurrencyValue(mode));
-  // End generic
+  $: inputPlaceholder = getAmountPlaceholderByCurrency(mode);
 
 </script>
 
@@ -123,7 +128,8 @@
     margin-bottom: 10px;
   }
    input::placeholder {
-    color: #4e594a;
+    color: #b8bbb6;
+    font-size: 12px;
   }
   input:focus-visible {
     outline-color: #4e594a;
@@ -144,6 +150,12 @@
   }
   .calculations.pesos input {
     color: #DF551E;
+  }
+  .calculations h1 {
+    font-size: 18px;
+  }
+  .calculations h2 {
+    font-size: 40px;
   }
   @media screen and (max-width: 1024px) {
     h1 {
