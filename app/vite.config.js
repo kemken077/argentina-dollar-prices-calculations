@@ -9,7 +9,7 @@ export default defineConfig({
     rollupOptions: {
       plugins: [nodeResolve()],
       external: [
-        /node_modules/,
+        '/node_modules/carbon-components-svelte',
       ],
     },
   },
