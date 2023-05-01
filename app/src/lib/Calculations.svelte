@@ -2,6 +2,7 @@
   import { ourPrice } from "../stores/stores";
   import { calculationMode, ratesUSDBased } from '../stores/stores';
   import  { formatAmountToCurrency } from '../utils/format';
+  import FlagIcon from "./FlagIcon.svelte";
   let mode;
 
   let inputAmount;
@@ -74,6 +75,7 @@
 </script>
 
 <div class={`calculations ${mode}`}>
+  <FlagIcon countryID={currenciesIDs[mode]} />
   <h1 class="unit-price">(1 {currenciesIDs[mode]}) =  ${pesoCurrencyValue ? pesoCurrencyValue : price} {currenciesIDs.pesos}</h1>
   <div class={`input-container ${mode}`}>
     <input
