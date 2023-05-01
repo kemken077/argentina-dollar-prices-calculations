@@ -35,9 +35,3 @@
   items={currencies}
   on:select={handleSelect}
 />
-
-
-
-<!-- 
-Event name	event.detail type
-on:select	{ selectedId: ComboBoxItemId; selectedItem: ComboBoxItem } -->
