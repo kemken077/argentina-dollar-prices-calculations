@@ -67,16 +67,28 @@
     return `Ingrese su monto en $(${currenciesIDs[mode]})`;
   }
 
+  /**
+     * @param {any} amount
+     */
+  function getDollarValueInArgentinePesos(amount) {
+    return amount ? (amount / price).toFixed(2) : 0;
+  }
+
   $: formattedInput = formatAmountToCurrency(inputAmount);
   $: calculatedCurrencyPrice = formatAmountToCurrency(getCalculatedCurrencyPrice(inputAmount, mode));
   $: pesoCurrencyValue = formatAmountToCurrency(getPesoCurrencyValue(mode));
   $: inputPlaceholder = getAmountPlaceholderByCurrency(mode);
+  $: dollarValueInArgentinePeso = getDollarValueInArgentinePesos(inputAmount);
 
 </script>
 
 <div class={`calculations ${mode}`}>
   <FlagIcon countryID={currenciesIDs[mode]} />
-  <h1 class="unit-price">(1 {currenciesIDs[mode]}) =  ${pesoCurrencyValue ? pesoCurrencyValue : price} {currenciesIDs.pesos}</h1>
+  {#if mode === 'pesos'}
+    <h1 class="unit-price">(1 {currenciesIDs[mode]}) =  ${price} {currenciesIDs.dollars}</h1>
+  {:else}
+    <h1 class="unit-price">(1 {currenciesIDs[mode]}) =  ${pesoCurrencyValue ? pesoCurrencyValue : price} {currenciesIDs.pesos}</h1>
+  {/if}
   <div class={`input-container ${mode}`}>
     <input
       type=number
@@ -90,7 +102,11 @@
   <h3>
     son:
   </h3>
-  <h2><span><FlagIcon countryID="ARS" className="ar" /></span> <span>{currenciesIDs.pesos} ${calculatedCurrencyPrice ? calculatedCurrencyPrice : 0}</span></h2>
+  {#if mode === 'pesos'}
+    <h2><span><FlagIcon countryID="USD" className="us" /></span> <span>{currenciesIDs.dollars} ${dollarValueInArgentinePeso}</span></h2>
+  {:else}
+    <h2><span><FlagIcon countryID="ARS" className="ar" /></span> <span>{currenciesIDs.pesos} ${calculatedCurrencyPrice ? calculatedCurrencyPrice : 0}</span></h2>
+  {/if}
 </div>
 
 

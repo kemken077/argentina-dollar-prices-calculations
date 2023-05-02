@@ -37,7 +37,8 @@
     top: -8px;
     margin: 0 auto;
   }
-  .flag-wrapper.ar {
+  .flag-wrapper.ar,
+  .flag-wrapper.us {
     top: 6px;
   }
 </style>
