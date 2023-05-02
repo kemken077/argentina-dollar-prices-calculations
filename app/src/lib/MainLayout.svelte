@@ -1,14 +1,15 @@
 
 <script>
   import { onMount } from "svelte";
-  import Calculations from "./Calculations.svelte";
-  import DolarPrices from "./DolarPrices.svelte";
-  import Header from "./Header.svelte";
-  import { SPANISH } from '../texts/languages';
-  import SelectCurrency from "./SelectCurrency.svelte";
-  import { getEndpoint } from "../config/api";
   import axios from "axios";
   import { ratesUSDBased } from '../stores/stores';
+  import { getEndpoint } from "../config/api";
+  import { SPANISH } from '../texts/languages';
+  import Header from "./Header.svelte";
+  import DolarPrices from "./DolarPrices.svelte";
+  import SelectCurrency from "./SelectCurrency.svelte";
+  import Calculations from "./Calculations.svelte";
+  import SideMenu from "./SideMenu/SideMenu.svelte";
 
   onMount(async () => {
     const currenciesEndpoint = 'currenciesRates';
@@ -28,9 +29,16 @@
     rel="stylesheet"
     href="https://unpkg.com/carbon-components-svelte/css/all.css"
 />
+<style>
+  .bx--side-nav__overlay ,
+  .bx--side-nav__navigation {
+    margin-top: 12px !important;
+  }
+</style>
 </svelte:head>
 <main>
   <Header title={SPANISH.header.title} />
+  <SideMenu />
   <div class="container">
     <section class="mode-trigger">
       <SelectCurrency />
