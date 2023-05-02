@@ -172,4 +172,9 @@
       font-size: 16px;
     }
   }
+  @media screen and (max-width: 414px) {
+    input::placeholder {
+      font-size: 12px;
+    }
+  }
 </style>
