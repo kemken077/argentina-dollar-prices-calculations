@@ -28,3 +28,4 @@
   items={currencies}
   on:select={handleSelect}
 />
+
