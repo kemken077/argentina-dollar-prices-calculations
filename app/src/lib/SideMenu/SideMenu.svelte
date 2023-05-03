@@ -8,25 +8,35 @@
     SideNavLink,
     SideNavDivider,
   } from 'carbon-components-svelte';
-  import { sideMenuOpen } from '../../stores/stores';
+  import { ourPrice, sideMenuOpen } from '../../stores/stores';
+  import DolarPrices from '../DolarPrices.svelte';
   let menuOpen = false;
+  let price;
 
+  ourPrice.subscribe((newPrice) => {
+    price = newPrice;
+  });
   sideMenuOpen.subscribe((newMenuState) => {
     menuOpen = newMenuState;
   });
+
+
+  function getPrice(price){
+    return `1 ARS = USD $${price.toFixed(2)}`;
+  };
+
+  $: dollarBluePriceText = getPrice(price);
+
 </script>
 
 <SideNav bind:isOpen={menuOpen}>
   <SideNavItems>
-    <SideNavLink text="Link 1" />
-    <SideNavLink text="Link 2" />
-    <SideNavLink text="Link 3" />
-    <SideNavMenu text="Menu">
-      <SideNavMenuItem href="/" text="Link 1" />
-      <SideNavMenuItem href="/" text="Link 2" />
-      <SideNavMenuItem href="/" text="Link 3" />
+    <SideNavLink text={'Dolar BLUE:'} class="blue" />
+    <SideNavLink text={dollarBluePriceText} />
+    <SideNavDivider />
+    <SideNavMenu text="Cotizaciones">
+      <DolarPrices />
     </SideNavMenu>
     <SideNavDivider />
-    <SideNavLink text="Link 4" />
   </SideNavItems>
 </SideNav>
