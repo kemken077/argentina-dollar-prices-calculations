@@ -22,7 +22,7 @@
 
 
   function getPrice(price){
-    return `1 ARS = USD $${price.toFixed(2)}`;
+    return `USD $1  = ARS $${price.toFixed(2)}`;
   };
 
   $: dollarBluePriceText = getPrice(price);
