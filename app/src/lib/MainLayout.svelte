@@ -6,7 +6,6 @@
   import { getEndpoint } from "../config/api";
   import { SPANISH } from '../texts/languages';
   import Header from "./Header.svelte";
-  import DolarPrices from "./DolarPrices.svelte";
   import SelectCurrency from "./SelectCurrency.svelte";
   import Calculations from "./Calculations.svelte";
   import SideMenu from "./SideMenu/SideMenu.svelte";
@@ -30,6 +29,7 @@
     href="https://unpkg.com/carbon-components-svelte/css/all.css"
 />
 <style>
+  /* Sidebar overrides */
   .bx--side-nav__overlay ,
   .bx--side-nav__navigation {
     margin-top: 12px !important;
@@ -45,9 +45,6 @@
     </section>
     <section class="calculations">
       <Calculations />
-    </section>
-    <section class="prices">
-      <DolarPrices />
     </section>
   </div>
 </main>
