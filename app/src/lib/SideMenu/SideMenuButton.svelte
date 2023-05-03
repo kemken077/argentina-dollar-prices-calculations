@@ -32,7 +32,6 @@
 <style>
   .side-menu-button:hover {
     cursor: pointer;
-    background-color: darkgray;
   }
   .side-menu-button {
     margin-top: 16px;

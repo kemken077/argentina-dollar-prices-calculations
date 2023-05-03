@@ -1,6 +1,5 @@
 <script>
-    import SideMenuButton from "./SideMenu/SideMenuButton.svelte";
-
+  import SideMenuButton from "./SideMenu/SideMenuButton.svelte";
   export let title = 'This is a default title';
 </script>
 
