@@ -24,7 +24,6 @@
       const res = await axios.get(dolarPriceEndpoint);
       currencyPrices = res.data;
       getOurPrice(currencyPrices[0].values.buy, currencyPrices[0].values.sale);
-      console.log({currencyPrices});
     } catch (error) {
       console.log('Error: ', error);
     }
