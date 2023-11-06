@@ -17,6 +17,7 @@
     candollar: 'CAD',
     yen: 'JPY',
     yuan: 'CNY',
+    uypesos: 'UYU',
   };
   let price = 0;
 
@@ -142,6 +143,11 @@
   }
   .calculations.yuan {
     background: red;
+  }
+
+  .calculations.uypesos {
+    background: grey;
+    color: white;
   }
 
   .calculations h1.unit-price {

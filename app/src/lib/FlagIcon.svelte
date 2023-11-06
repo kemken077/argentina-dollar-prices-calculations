@@ -13,6 +13,7 @@
     CAD: 'ca',
     JPY: 'jp',
     CNY: 'cn',
+    UYU: 'uy',
   };
 
   /**

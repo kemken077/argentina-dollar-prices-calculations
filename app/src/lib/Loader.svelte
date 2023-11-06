@@ -6,7 +6,7 @@
 	let Component;
 	
 	onMount(async () => {
-    await (new Promise(f => setTimeout(f, 2000))); // simulate delay
+    await (new Promise(f => setTimeout(f, 1000))); // simulate delay
 		Component = (await loader()).default;
 	});
 	

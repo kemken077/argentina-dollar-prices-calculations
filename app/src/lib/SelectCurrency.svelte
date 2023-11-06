@@ -13,6 +13,7 @@
     {id: 6, text: 'CAD - Canadian Dollar', label: 'candollar'},
     {id: 7, text: 'JPY - Japanese Yen', label: 'yen'},
     {id: 8, text: 'CNY - Chinese Yuan Renminbi', label: 'yuan'},
+    {id: 9, text: 'UYU - Uruguayian Peso', label: 'uypesos'},
   ];
   function handleSelect(event) {
     const currencyMode = event.detail.selectedItem.label;
